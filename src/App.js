@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import PokemonForm from "./PokemonForm";
+import PokemonInfo from "./PokemonInfo";
 
 function App() {
+  const [pokemonName,setPokemonName] = React.useState('');
+
+  function handleSubmit(newPokemonName){
+    setPokemonName(newPokemonName);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Know Your Pokemon</h2>
+      <PokemonForm pokemonName={pokemonName} onSubmit={handleSubmit} />
+      <hr />
+      <div className="pokemon-info">
+        <PokemonInfo pokemonName = {pokemonName} />
+      </div>
     </div>
   );
 }
